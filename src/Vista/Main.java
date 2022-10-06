@@ -46,7 +46,7 @@ public class Main {
 
                     break;
                 case 5: //Salir
-                    System.exit(2)
+                    System.exit(2);
                 default:    //caso error
 
             }
