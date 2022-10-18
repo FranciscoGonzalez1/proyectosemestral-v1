@@ -19,17 +19,17 @@ public class UIArriendoEquipos {
     public void menu() {
         int elPepe;
         do {
-            System.out.println("******* SISTEMA DE ARRIENDO DE EQUIPOS DE NIEVE *******");
-            System.out.println("");
+            System.out.println("******* SISTEMA DE ARRIENDO DE EQUIPOS DE NIEVE ********\n");
+            System.out.println("*** MENU DE OPCIONES ***");
             System.out.println("1. Crea un nuevo cliente");
             System.out.println("2. Crea un nuevo equipo");
             System.out.println("3. Lista todos los clientes");
             System.out.println("4. Lista todos los equipos");
             System.out.println("5. Salir");
-            System.out.println("    Ingrese una opcion");
+            System.out.print("\tIngrese opcion:\t");
             elPepe = sc.nextInt();
 
-            if (elPepe < 0 && elPepe > 5) {
+            if (elPepe < 0 || elPepe > 5) {
                 System.out.println("ingrese una opcion valida ");
                 break;
             }
@@ -60,30 +60,26 @@ public class UIArriendoEquipos {
 
     public void creaCliente(){
         //presionando ctrl+d optengo la misma linea abajo
-        System.out.println("Ingrese el rut del cliente");
+        System.out.println("Creando un nuevo cliente...\n");
+        System.out.print("Rut:\t");
         String rut = sc.next();
         //el metodo de la clase Scanner next() no admite espacios o enter
         //por lo cual un nextLine() gasta el enter extra
         sc.nextLine();
-        System.out.println("Ingrese el nombre del cliente");
+        System.out.print("Nombre:\t");
         String nombre = sc.nextLine();
         //sc.nextLine();
-        System.out.println("Ingrese la direccion del cliente");
+        System.out.print("Domicilio:\t");
         String direccion = sc.nextLine();
         //sc.nextLine();
-        System.out.println("Ingrese el numero de telefono del cliente");
+        System.out.print("Telefono:\t");
         String telefono = sc.next();
         //cuadro de dialogo donde se muestra el cliente ingresado
-        System.out.println("Creando un nuevo cliente...");
-        System.out.println("Rut: " + rut);
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Domicilio: " + direccion);
-        System.out.println("Telefono: " + telefono);
         try {
             //utilizamos el metodo sleep para detener la ejecucion del programa unos segundos
             //para asi poder mostrar los datos que se ingresan.
             //como es un metodo de la clase thread va a acompañado del try y catch
-            Thread.sleep(5*1000);
+            Thread.sleep(2*1000);
         }
         catch (Exception e) {
             System.out.println(e);
@@ -91,26 +87,23 @@ public class UIArriendoEquipos {
         controladorArriendoEquipos.creaCliente(rut, nombre, direccion, telefono);
     }
     public void creaEquipo(){
-        System.out.println("Ingrese el codigo del equipo");
+        System.out.println("Creando un nuevo equipo...\n");
+        System.out.print("Codigo:\t");
         String cod = sc.next();
         sc.nextLine();
-        System.out.println("Ingrese la descripcion del equipo");
+        System.out.print("Descripcion:\t");
         String desc = sc.nextLine();
         //sc.nextLine();
-        System.out.println("Ingrese la cantidad de dias de arriendo");
-        Long dias = sc.nextLong();
-        System.out.println("Ingrese el precio por dia");
-        Long precioDia = sc.nextLong();
-        Long precio = dias * precioDia;
-        System.out.println("Creando un nuevo equipo...");
-        System.out.println("Codigo: " + cod);
-        System.out.println("Descripcion: " + desc);
-        System.out.println("Precio arriendo por dia: " + precio);
+        System.out.print("Precio arriendo por dia:\t");
+        long dias = sc.nextLong();
+        System.out.print("Ingrese el precio por dia\t");
+        long precioDia = sc.nextLong();
+        long precio = dias * precioDia;
         try {
             //utilizamos el metodo sleep para detener la ejecucion del programa unos segundos
             //para asi poder mostrar los datos que se ingresan.
             //como es un metodo de la clase thread va a acompañado del try y catch
-            Thread.sleep(5*1000);
+            Thread.sleep(2*1000);
         }
         catch (Exception e) {
             System.out.println(e);
@@ -151,12 +144,12 @@ public class UIArriendoEquipos {
             }
             System.out.println("");
 
-      }
+        }
         try {
             //utilizamos el metodo sleep para detener la ejecucion del programa unos segundos
             //para asi poder mostrar los datos que se ingresan.
             //como es un metodo de la clase thread va a acompañado del try y catch
-            Thread.sleep(5 * 1000);
+            Thread.sleep(2 * 1000);
         } catch (Exception e) {
             System.out.println(e);
         }
