@@ -28,23 +28,24 @@ public class ControladorArriendoEquipos {
         //agregarlo al arreglo
         mochilaDeClientes.add(clienteNuevo);
     }
-    public void creaEquipos(long cod, String desc, long precio){
+    public void creaEquipo(String cod, String desc, long precio){
         //crea el equipo y llena info
-        Equipo equipoNuevo = new Equipo(cod, desc, precio);
+        long code =Long.parseLong(cod);
+        Equipo equipoNuevo = new Equipo(code, desc, precio);
         //agregarlo al arreglo
         mochilaDeEquipos.add(equipoNuevo);
     }
 
     public String[][] listaClientes(){
         //crea un String[][] con todos los datos de clientes
-        String[][] bolsaClientes = new String[5][mochilaDeClientes.size()];
+        String[][] bolsaClientes = new String[mochilaDeClientes.size()][5];
         int contador = 0;
         for (Cliente elCliente : mochilaDeClientes) {
             //[0]: rut, [1]: nombre, [2]: dirección, [3]: telefono, [4]: estado
-            bolsaClientes[0][contador] = elCliente.getRut();
-            bolsaClientes[1][contador] = elCliente.getNombre();
-            bolsaClientes[2][contador] = elCliente.getDireccion();
-            bolsaClientes[3][contador] = elCliente.getTelefono();
+            bolsaClientes[contador][0] = elCliente.getRut();
+            bolsaClientes[contador][1] = elCliente.getNombre();
+            bolsaClientes[contador][2] = elCliente.getDireccion();
+            bolsaClientes[contador][3] = elCliente.getTelefono();
             String activ;
             if (elCliente.isActivo()){
                 activ = "Activo";
@@ -52,21 +53,21 @@ public class ControladorArriendoEquipos {
             else{
                 activ = "Inactivo";
             }
-            bolsaClientes[4][contador] = activ;
+            bolsaClientes[contador][4] = activ;
             contador++;
         }
         return bolsaClientes;
     }
-    public String[][] listaEquipos(){
+    public String[][] listaEquipo(){
         //crea un String[][] con todos los datos de equipos
-        String[][] bolsaEquipos = new String[4][mochilaDeEquipos.size()];
+        String[][] bolsaEquipos = new String[mochilaDeEquipos.size()][4];
         int contador = 0;
         String estad;
         for (Equipo elEquipo : mochilaDeEquipos) {
             //[0]: código, [1]: descripción, [2]: precio, [3]: estado
-            bolsaEquipos[0][contador] = ("" + elEquipo.getCódigo());
-            bolsaEquipos[1][contador] = elEquipo.getDescripción();
-            bolsaEquipos[2][contador] = ("" + elEquipo.getPrecioArriendoDia());
+            bolsaEquipos[contador][0] = ("" + elEquipo.getCódigo());
+            bolsaEquipos[contador][1] = elEquipo.getDescripción();
+            bolsaEquipos[contador][2] = ("" + elEquipo.getPrecioArriendoDia());
             switch (elEquipo.getEstado()){
                 case OPERATIVO:
                     estad = "operativo";
@@ -80,7 +81,7 @@ public class ControladorArriendoEquipos {
                 default:
                     estad = "no inicializado";
             }
-            bolsaEquipos[3][contador] = estad;
+            bolsaEquipos[contador][3] = estad;
             contador++;
         }
         return bolsaEquipos;

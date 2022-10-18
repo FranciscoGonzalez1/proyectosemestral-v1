@@ -1,10 +1,6 @@
 package Vista;
 
 import Controlador.ControladorArriendoEquipos;
-import Modelo.Cliente;
-import Modelo.Equipo;
-
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -122,65 +118,47 @@ public class UIArriendoEquipos {
         controladorArriendoEquipos.creaEquipo(cod, desc, precio);
     }
     public void listaCliente(){
-        //llamo la lista de clientes desde la clase controlador arriendos de equipos con la instancia del controlador
-        //desde ahi llamo el metodo getclientes para obtener los clientes
-        List<Cliente> clientes = controladorArriendoEquipos.getClientes();
-        System.out.println("LISTADO DE CLIENTES");
-        System.out.println("-------------------");
-        System.out.println("");
-        System.out.println("Rut          Nombre \t\t\t Direccion \t\t\t Telefono     Estado");
-        for (int i = 0; i<clientes.size(); i++){
-            /*
-            clientes.get(i).getNombre();
-            clientes.get(i).getDireccion();
-            clientes.get(i).getRut();
-            clientes.get(i).getTelefono();
-            */
-            System.out.println(
-                    "" + clientes.get(i).getRut() + " " +
-                            "" + clientes.get(i).getNombre() + "\t " +
-                            "" + clientes.get(i).getDireccion() + "\t " +
-                            "" + clientes.get(i).getTelefono() + "  ");
-            try {
-                //utilizamos el metodo sleep para detener la ejecucion del programa unos segundos
-                //para asi poder mostrar los datos que se ingresan.
-                //como es un metodo de la clase thread va a acompañado del try y catch
-                Thread.sleep(5*1000);
+        String[][] clientes= controladorArriendoEquipos.listaClientes();
+        System.out.println("Rut nombre direccion telefono estado");
+        for (int i = 0; i<clientes.length; i++){
+            for(int j = 0; j<5; j++) {
+                System.out.print(clientes[i][j] + "");
             }
-            catch (Exception e) {
-                System.out.println(e);
-            }
+            System.out.println("");
+        }
+        try {
+            //utilizamos el metodo sleep para detener la ejecucion del programa unos segundos
+            //para asi poder mostrar los datos que se ingresan.
+            //como es un metodo de la clase thread va a acompañado del try y catch
+            Thread.sleep(2 * 1000);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
     public void listaEquipos(){
         //llamo la lista de equipos desde la clase controlador arriendos de equipos con la instancia del controlador
         //desde ahi llamo el metodo getequipos para obtener los equipos
-        List<Equipo> equipos = controladorArriendoEquipos.getEquipos();
+        String[][] equipos = controladorArriendoEquipos.listaEquipo();
         System.out.println("LISTADO DE EQUIPOS");
         System.out.println("-------------------");
         System.out.println("");
         System.out.println("Codigo \t\tDescripcion \t\t\t\t\t Precio  Estado");
-        for (int i = 0; i<equipos.size(); i++){
-            /*
-            equipos.get(i).getCodigo();
-            equipos.get(i).getDescripcion();
-            equipos.get(i).getPrecioArriendoDia();
-            equipos.get(i).getEstado();
-            */
-            System.out.println(
-                    "" + equipos.get(i).getCodigo() + " \t" +
-                            "" + equipos.get(i).getDescripcion() + " \t\t\t " +
-                            "" + equipos.get(i).getPrecioArriendoDia() + "  ");
-            try {
-                //utilizamos el metodo sleep para detener la ejecucion del programa unos segundos
-                //para asi poder mostrar los datos que se ingresan.
-                //como es un metodo de la clase thread va a acompañado del try y catch
-                Thread.sleep(5*1000);
-            }
-            catch (Exception e) {
-                System.out.println(e);
-            }
 
+        for (int i = 0; i<equipos.length; i++){
+            for(int j = 0; j<4; j++) {
+                System.out.print(equipos[i][j]);
+
+            }
+            System.out.println("");
+
+      }
+        try {
+            //utilizamos el metodo sleep para detener la ejecucion del programa unos segundos
+            //para asi poder mostrar los datos que se ingresan.
+            //como es un metodo de la clase thread va a acompañado del try y catch
+            Thread.sleep(5 * 1000);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
